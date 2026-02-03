@@ -53,15 +53,51 @@ public class EditStickerTextView extends EditStickerView implements EditTextEdit
         super.onInitialize(context);
     }
 
-    @Override
-    public View onCreateContentView(Context context) {
-        mTextView = new TextView(context);
-        mTextView.setTextSize(mBaseTextSize);
-        mTextView.setPadding(PADDING, PADDING, PADDING, PADDING);
-        mTextView.setTextColor(Color.WHITE);
+//    @Override
+//    public View onCreateContentView(Context context) {
+//        mTextView = new TextView(context);
+//        mTextView.setTextSize(mBaseTextSize);
+//        mTextView.setPadding(PADDING, PADDING, PADDING, PADDING);
+//        mTextView.setTextColor(Color.WHITE);
+//
+//        return mTextView;
+//    }
+//@Override
+//public View onCreateContentView(Context context) {
+//    mTextView = new TextView(context);
+//
+//    mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mBaseTextSize);
+//    mTextView.setPadding(PADDING, PADDING, PADDING, PADDING);
+//    mTextView.setTextColor(Color.WHITE);
+//
+//    // ⭐⭐⭐ 关键修改开始 ⭐⭐⭐
+//
+//    mTextView.setSingleLine(false);                 // 允许多行
+//    mTextView.setMaxLines(Integer.MAX_VALUE);       // 不限制行数
+//    mTextView.setHorizontallyScrolling(true);       // 横向优先扩展
+//    mTextView.setEllipsize(null);                   // 不省略
+//    mTextView.setMaxWidth(Integer.MAX_VALUE);       // 取消最大宽度限制
+//
+//    // ⭐⭐⭐ 关键修改结束 ⭐⭐⭐
+//
+//    return mTextView;
+//}
+@Override
+public View onCreateContentView(Context context) {
+    mTextView = new TextView(context);
+    mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mBaseTextSize);
+    mTextView.setPadding(PADDING, PADDING, PADDING, PADDING);
+    mTextView.setTextColor(Color.WHITE);
 
-        return mTextView;
-    }
+    // 多行显示，不限制行数
+    mTextView.setSingleLine(false);
+    mTextView.setMaxLines(Integer.MAX_VALUE);
+    mTextView.setHorizontallyScrolling(false);
+    mTextView.setEllipsize(null);
+
+    return mTextView;
+}
+
 
     public void setText(EditImageText text) {
         mText = text;
